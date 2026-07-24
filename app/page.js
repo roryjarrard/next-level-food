@@ -1,9 +1,21 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main>
-      <h1 style={{ color: 'white', textAlign: 'center' }}>
+      <h1 style={{ color: "white", textAlign: "center" }}>
         Time to get started!
       </h1>
+
+      <p>
+        <Link href="/meals">View Meals</Link>
+      </p>
+      <p>
+        <Link href="/meals/share">View Shared Meals</Link>
+      </p>
+      <p>
+        <Link href="/community">View Community Page</Link>
+      </p>
     </main>
   );
 }
