@@ -1,11 +1,16 @@
 import Image from "next/image";
 import classes from "./page.module.css";
 import { getMeal } from "@/lib/meals";
+import { notFound } from "next/navigation";
 
 export default async function MealDetails({ params }) {
   const { mealId } = await params;
 
   const meal = getMeal(mealId);
+
+  if (!meal) {
+    notFound();
+  }
 
   meal.instructions = meal.instructions.replace(/\n/g, "<br />");
 
@@ -26,9 +31,7 @@ export default async function MealDetails({ params }) {
       <main>
         <p
           className={classes.instructions}
-          dangerouslySetInnerHTML={{
-            __html: meal.instructions,
-          }}
+          dangerouslySetInnerHTML={{ __html: meal.instructions }}
         ></p>
       </main>
     </>
